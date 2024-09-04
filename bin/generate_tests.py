@@ -491,7 +491,7 @@ def generate_exercise(
             print(f"{slug} generated at {tests_path}")
     except (TypeError, UndefinedError, SyntaxError) as e:
         logger.debug(str(e))
-        logger.error(f"{slug}: generation failed")
+        logger.error(f"{slug}: generation failed", e)
         return False
     except TemplateNotFound as e:
         logger.debug(str(e))
