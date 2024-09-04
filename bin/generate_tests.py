@@ -369,7 +369,7 @@ def format_file(path: Path) -> NoReturn:
     """
     Runs roc format on file at path
     """
-    subprocess.check_call(["roc", "format", path])
+    # subprocess.check_call(["roc", "format", path])
 
 
 def drop_timestamp(lines):
