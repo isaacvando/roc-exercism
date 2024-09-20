@@ -1,0 +1,23 @@
+{%- import "generator_macros.j2" as macros with context -%}
+{{ macros.canonical_ref() }}
+{{ macros.header() }}
+
+import {{ exercise | to_pascal }} exposing [open, close, deposit, withdraw, balance]
+
+{% for case in cases -%}
+# {{ case["description"] }}
+expectResult{{ loop.index }} =
+    { isOpen: Bool.false, balance: 0 }
+    {%- for operation in case["input"]["operations"] %}
+    |> {{ operation["operation"] }}{{ "?" if not loop.last else "" }} {{ operation["amount"] | default('') }}
+    {%- endfor %}
+
+expect
+
+    {%- if case["expected"]["error"] %}
+    Result.isErr expectResult{{ loop.index }}
+    {%- else %}
+    expectResult{{ loop.index }} == Ok {{ case["expected"] }}
+    {%- endif %}
+
+{% endfor %}

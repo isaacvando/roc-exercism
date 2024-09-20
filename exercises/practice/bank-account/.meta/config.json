@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "isaacvando"
+  ],
+  "files": {
+    "solution": [
+      "BankAccount.roc"
+    ],
+    "test": [
+      "bank-account-test.roc"
+    ],
+    "example": [
+      ".meta/Example.roc"
+    ]
+  },
+  "blurb": "Simulate a bank account supporting opening/closing, withdraws, and deposits of money. Watch out for concurrent transactions!"
+}
